@@ -1,24 +1,29 @@
 ---
-title: Hacking Landry Cards @ SHAD
+title: Hacking Laundry Cards @ SHAD
 date: '2024-07-04 12:00:00'
 tags: ['SHAD', 'Hacking', 'NFC']
 draft: false
 summary: Hacking MiFare Classic 1k cards to get free laundry at SHAD
 ---
+# Disclaimer
+
+I do not condone hacking or any illegal activities. I am not responsible for any actions you take. This is for educational purposes only.
+
+Please do not use this information to do anything illegal.
 
 # Introduction
 
-A couple of months ago I bought a Proxmark3 Easy to mess around with. I was messing around with mainly transport cards in Toronto and Niagara. Fast-forward to a couple of Weeks ago I was thinking about SHAD thought bringing my Proxmark3 would be cool. I was thinking about what I could do with it and I hopped our room keys would be NFC. Fast-forward again to right before SHAD when I received a email saying we would not need a 75$ (A bit much) deposit for our room keys. This probably meant we had key cards. With that email I also saw we had "Landry Cards". I assumed both were NFC cards.
+A couple of months ago I bought a Proxmark3 Easy to mess around with. I was messing around with mainly transport cards in Toronto and Niagara. Fast-forward a couple of weeks, I was thinking about SHAD thought bringing my Proxmark3 would be cool. I was thinking about what I could do with it and I hopped our room keys would be NFC. Fast-forward again to right before SHAD when I received a email saying we would not need a 75$ (A bit much) deposit for our room keys. This probably meant we had key cards. With that email, I also saw we had "Landry Cards." I assumed both were NFC cards.
 
 # SHAD Day 1 - 06/30/2024
 
-When I arrived at SHAD, I was sad to see that our room cards where magnet strip. I was a bit devastated but I just moved on with my day.
+When I arrived at SHAD, I was sad to see that our room cards where magnetic strip. I was a bit devastated but I just moved on with my day.
 
-Then I went exploring. I found the laundry room and saw the card reader. I was happy to see it was a MiFare Classic 1k card reader. I quickly bought a card ($5 oof expensive) and went back to my room to start hacking. I used `hf mf autopwn` and it was able to extract a couple keys. I later found out that only one of they keys where correct and my Proxmark3 was being weird. I was not able to use autopwn again on these cards. If you have any idea why please let me know.
+Then I went exploring. I found the laundry room and saw the card reader. I was happy to see it was a MiFare Classic 1k card reader. I quickly bought a card ($5 oof, expensive) and went back to my room to start hacking. I used `hf mf autopwn` and it was able to extract a couple keys. I later found out that only one of they keys where correct and my Proxmark3 was being weird. I was not able to use autopwn again on these cards. If you have any idea why please let me know.
 
 # SHAD Day 2 - 07/01/2024
 
-I ran `hf mf staticnested --1k --blk 3 -a -k 212223242555 --dumpkeys` (Make sure to use `--dummpkeys` only staticnested has this option) and I was able to dump the real keys. I then ran `hf mf dump` and I was able to get a full dump the card. I then analysed it and found only a couple sectors for with data. I found where the data was stored and there was a attempt to block data modification.
+I ran `hf mf staticnested --1k --blk 3 -a -k 212223242555 --dumpkeys` (Make sure to use `--dumpkeys`, only `staticnested` has this option) and I was able to dump the real keys. I then ran `hf mf dump` and I was able to get a full dump the card. I then analysed it and found only a couple sectors for with data. I found where the data was stored and there was a attempt to block data modification.
 
 Road Blocks:
 
@@ -27,20 +32,20 @@ Road Blocks:
 - Real Checksum? (More on that later)
 - Everything $*2$ (Also More later)
 
-I then went to modify the card to have a ton of and I tested it. It did not work. I gave up, and cloned the card. At least that worked.
+I then went to modify the card to have a ton of money and I tested it and... It did not work. I gave up and cloned the card, at least that worked.
 
 # SHAD Day 3 - 07/02/2024
 
-On this the laundry schedule was posted (120 people is hard to manage). Each house group was provided with one card (I already had one) and we where a bit forced to use the assigned days (Again don't want 120 flooding one room). I was assigned the day after
+On this day, the laundry schedule was posted assigning us "laundry days" (120 people is hard to manage). Each house group was provided with one card (I already had one), and we were a bit forced to use the assigned days (Again don't want 120 flooding one room). I was assigned the day after
 
 # SHAD Day 4 - 07/03/2024
 
 ## Finally, Done
 
-As I just mentioned, I was going to do my laundry on this day. I used my own card and money, and I paid. Then I went and checked my cloned card, and it still had the initial amount. Later that day I want dump the real card and diffed the two dumps. I found the checksum was not a checksum (Still don't know what it is) and I found the data was not $*2$ but just a misdirection.
+As I just mentioned, I was going to do my laundry on this day. I used my own card and money, and I paid. Then I went and checked my cloned card, and it still had the initial amount. Later that day I went dump the real card and compared it with the old dump. I found the checksum was not a checksum (Still don't know what it is) and I found the data was not $*2$ but just a misdirection.
 
-I modified the data to become a millionaire (In laundry money) and I tested it. It gave me a balance error. I then modified the data to be a bit more reasonable and it worked. In this time I was also told the max load amount is 60 a friend hit the limit (Shared Card). I then went and tested more and I think (I did not want to test more) I found the max amount is $64. Anything above that will give a balance error or will tell you that your balance is 0.
+I modified the data to become a millionaire (in laundry money) and I tested it. It gave me a balance error. I then modified the data to be a bit more reasonable and it worked. In this time I was also told the max load amount is 60 a friend hit the limit (Shared Card). In the end, I think (I did not want to test more) the max amount is $64. Anything above that will give a balance error or will tell you that your balance is 0.
 
 # Conclusion
 
-After only a couple of days, I was able to generate a card that would give me free laundry money. I was able to do this by using a Proxmark3 Easy and a MiFare Classic 1k card. I was able to clone the card and modify the data to give me free laundry. I was also able to find the max amount that can be stored on the card. I was also able to reverse engineer most of the data on the card, enough to modify it. This really shows how insecure these MiFare Classic 1k cards are. I hope you enjoyed this write-up and I hope you learned something. If you have any questions or comments, please let me know.
+After only a couple of days, I was able to generate a card that gave me free laundry money, clone the card, find the max amount that can be stored on the card, and reverse engineer the card. This really shows how insecure these MiFare Classic 1k cards are. I hope you enjoyed this write-up and I hope you learned something. If you have any questions or comments, please let me know.
