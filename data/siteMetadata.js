@@ -12,7 +12,7 @@ const siteMetadata = {
   // socialBanner: '/static/images/twitter-card.png',
   // mastodon: '',
   email: 'aaron@runthebot.me',
-  github: 'https://github.com',
+  github: 'https://github.com/runthebot',
   x: 'https://twitter.com/RunTheBot',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',
