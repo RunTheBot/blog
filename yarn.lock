@@ -8670,13 +8670,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nextjs@npm:latest":
-  version: 0.0.3
-  resolution: "nextjs@npm:0.0.3"
-  checksum: 863a1121b51eda269b59955ff3d63e56abc53a67f93774896b8b9fdcf89c7cb8b67bd2c136ab622aa1cc8797c1733d03388e3e4778fc85addf49942c933a8372
-  languageName: node
-  linkType: hard
-
 "no-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "no-case@npm:3.0.4"
@@ -10940,7 +10933,6 @@ __metadata:
     next: latest
     next-contentlayer2: 0.4.6
     next-themes: ^0.3.0
-    nextjs: latest
     pliny: 0.2.1
     postcss: ^8.4.24
     prettier: ^3.0.0
