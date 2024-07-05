@@ -5,6 +5,9 @@ tags: ['SHAD', 'Hacking', 'NFC']
 draft: false
 summary: Hacking MiFare Classic 1k cards to get free laundry at SHAD
 ---
+
+import FileDownload from "@/components/FileDownload";
+
 # Disclaimer
 
 I do not condone hacking or any illegal activities. I am not responsible for any actions you take. This is for educational purposes only.
@@ -46,6 +49,15 @@ As I just mentioned, I was going to do my laundry on this day. I used my own car
 
 I modified the data to become a millionaire (in laundry money) and I tested it. It gave me a balance error, that means something worked!. I then modified the data to be a bit more reasonable and it worked. In this time I was also told the max load amount is 60 a friend hit the limit (Shared Card). In the end, I think (I did not want to test more) the max amount is $64. Anything above that will give a balance error or will tell you that your balance is 0.
 
+[//]: # (<FileDownload fileUrl="/static/logo.png" displayName="test.png" />)
+
+
 # Conclusion
 
 After only a couple of days, I was able to generate a card that gave me free laundry money, clone the card, find the max amount that can be stored on the card, and reverse engineer the card. This really shows how insecure these MiFare Classic 1k cards are. I hope you enjoyed this write-up and I hope you learned something. If you have any questions or comments, please let me know.
+
+
+# Downloads
+
+<FileDownload fileUrl="/static/files/laundryCards/beforeUse.bin" displayName="Before Use - $5.00"/>
+<FileDownload fileUrl="/static/files/laundryCards/afterUse.bin" displayName="After Use - $2.50"/>
