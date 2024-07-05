@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaFileDownload } from 'react-icons/fa'
 
 const FileDownload = ({ displayName, fileUrl }: { displayName: string; fileUrl: string }) => {
   const trimmedUrl = fileUrl.replace(/\/$/, '')
@@ -8,9 +9,10 @@ const FileDownload = ({ displayName, fileUrl }: { displayName: string; fileUrl: 
     <a
       href={fileUrl}
       download={fileName}
-      className="my-2 flex max-w-sm items-center rounded-lg border-2 border-gray-900 bg-transparent p-3 text-primary-500 no-underline hover:text-primary-600 dark:hover:text-primary-400"
+      className="flex max-w-sm items-center rounded-lg border-2 border-gray-900 bg-transparent p-3 text-primary-500 no-underline transition-all hover:text-primary-600 dark:hover:text-primary-400"
     >
-      <div className="">
+      <FaFileDownload className="mr-4 text-4xl" />
+      <div className="flex flex-col">
         <p className="m-0 text-sm font-medium">{fileName}</p>
         <p className="m-0 text-2xl font-bold">{displayName}</p>
       </div>
