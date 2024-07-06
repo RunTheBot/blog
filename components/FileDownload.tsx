@@ -4,7 +4,7 @@ import { FaFileDownload } from 'react-icons/fa'
 const FileDownload = ({ displayName, fileUrl }: { displayName: string; fileUrl: string }) => {
   const trimmedUrl = fileUrl.replace(/\/$/, '')
   const fileName = trimmedUrl.substring(trimmedUrl.lastIndexOf('/') + 1)
-  console.log('fileName', fileName)
+  // console.log('fileName', fileName)
   return (
     <a
       href={fileUrl}
