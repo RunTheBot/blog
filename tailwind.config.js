@@ -27,7 +27,7 @@ module.exports = {
       colors: {
         primary: colors.blue,
         gray: colors.gray,
-        midnight: '#0c041b',
+        midnight: '#14062d',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
