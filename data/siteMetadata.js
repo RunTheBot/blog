@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Aaron Huang',
   headerTitle: 'RunTheBot',
   description:
-    'I am a student at the Toronto District School Board. I am passionate about technology and I love to learn new things. I am currently learning about web development, and I am working with a new VRC team. I am also a member and former team captain of FRC Team 7520. I am always looking for new opportunities to learn and grow!',
+    'RunTheBot - VRC 95500A - FRC 7520 - I am a student at the Toronto District School Board. I am passionate about technology and I love to learn new things.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://runthebot.me',
