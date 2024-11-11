@@ -288,7 +288,6 @@
   --midnight: 262, 76%, 5%;
 }
 
-
 @tailwind base;
 
 /* Firefox */
@@ -311,7 +310,6 @@
   background-color: hsl(var(--blue-950));
   border-radius: 14px;
 }
-
 
 @tailwind components;
 @tailwind utilities;

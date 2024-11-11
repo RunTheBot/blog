@@ -17,7 +17,7 @@ const GradientBackground = () => {
 
   return (
     <div
-      className="dark:to-midnight fixed left-0 top-0 -z-10 h-screen w-screen bg-white pl-[calc(100vw-100%)] antialiased dark:bg-gradient-to-r dark:from-gray-950"
+      className="fixed left-0 top-0 -z-10 h-screen w-screen bg-white pl-[calc(100vw-100%)] antialiased dark:bg-gradient-to-r dark:from-gray-950 dark:to-midnight"
       style={{
         background: `radial-gradient(circle at ${position.x}px ${position.y}px, var(--tw-gradient-to), var(--tw-gradient-from)`,
       }}
