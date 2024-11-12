@@ -73,6 +73,7 @@ const GradientBackground = () => {
       })
 
       // Continue animation loop
+      //@ts-ignore
       animationFrameRef.current = requestAnimationFrame(updatePosition)
     }
 
