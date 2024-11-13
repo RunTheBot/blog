@@ -5,8 +5,8 @@ import type { MDXComponents } from 'mdx/types'
 import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
-import FileDownload from '@/src/components/FileDownload'
-import DownloadList from '@/src/components/DownloadList'
+import FileDownload from '@/components/FileDownload'
+import DownloadList from '@/components/DownloadList'
 
 export const components: MDXComponents = {
   Image,

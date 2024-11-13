@@ -1,17 +1,17 @@
-import 'css/tailwind.css'
+import '@/css/tailwind.css'
 import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
-import Header from '@/src/components/Header'
-import SectionContainer from '@/src/components/SectionContainer'
-import Footer from '@/src/components/Footer'
-import siteMetadata from '@/src/data/siteMetadata'
+import Header from '@/components/Header'
+import SectionContainer from '@/components/SectionContainer'
+import Footer from '@/components/Footer'
+import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
-import GradientBackground from '@/src/components/GradientBackground'
+import GradientBackground from '@/components/GradientBackground'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
