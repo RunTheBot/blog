@@ -17,9 +17,9 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"],
-      "@/layouts/*": ["layouts/*"],
+      "@/components/*": ["src/components/*"],
+      "@/data/*": ["src/data/*"],
+      "@/layouts/*": ["src/layouts/*"],
       "@/css/*": ["css/*"],
       "@/*": ["*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
