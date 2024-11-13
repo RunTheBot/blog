@@ -2,6 +2,7 @@ interface MotionConfig {
   maxJerk: number // Maximum jerk in units/s³
   maxAccel: number // Maximum acceleration in units/s²
   maxVel: number // Maximum velocity in units/s
+  tolerance: number // Position error tolerance
 }
 
 interface MotionState {
@@ -22,6 +23,7 @@ class MotionProfiler {
   private readonly maxJerk: number
   private readonly maxAccel: number
   private readonly maxVel: number
+  private readonly tolerance: number
 
   private position: number
   private velocity: number
@@ -34,6 +36,7 @@ class MotionProfiler {
     this.maxJerk = config.maxJerk ?? 1000 // units/s³
     this.maxAccel = config.maxAccel ?? 100 // units/s²
     this.maxVel = config.maxVel ?? 10 // units/s
+    this.tolerance = config.tolerance ?? 0.1 // units
 
     // Initialize state
     this.position = 0
@@ -48,12 +51,29 @@ class MotionProfiler {
   }
 
   public update(): MotionState {
+    // Calculate position error
+    const error = this.targetPosition - this.position
+
+    // if within tolerance, and you are able to stop in time, stop and set position to target
+
+    if (
+      Math.abs(error) < this.tolerance &&
+      Math.abs(this.velocity) < Math.sqrt(2 * this.maxAccel * this.tolerance)
+    ) {
+      this.position = this.targetPosition
+      this.velocity = 0
+      this.acceleration = 0
+      return {
+        position: this.position,
+        velocity: this.velocity,
+        acceleration: this.acceleration,
+        error: error,
+      }
+    }
+
     const currentTime = performance.now()
     const dt = (currentTime - this.lastUpdateTime) / 1000 // Convert to seconds
     this.lastUpdateTime = currentTime
-
-    // Calculate position error
-    const error = this.targetPosition - this.position
 
     // Calculate desired acceleration based on error and current velocity
     const desiredAccel = this.calculateDesiredAcceleration(error)
