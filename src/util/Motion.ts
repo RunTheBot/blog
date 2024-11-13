@@ -54,23 +54,6 @@ class MotionProfiler {
     // Calculate position error
     const error = this.targetPosition - this.position
 
-    // if within tolerance, and you are able to stop in time, stop and set position to target
-
-    if (
-      Math.abs(error) < this.tolerance &&
-      Math.abs(this.velocity) < Math.sqrt(2 * this.maxAccel * this.tolerance)
-    ) {
-      this.position = this.targetPosition
-      this.velocity = 0
-      this.acceleration = 0
-      return {
-        position: this.position,
-        velocity: this.velocity,
-        acceleration: this.acceleration,
-        error: error,
-      }
-    }
-
     const currentTime = performance.now()
     const dt = (currentTime - this.lastUpdateTime) / 1000 // Convert to seconds
     this.lastUpdateTime = currentTime
