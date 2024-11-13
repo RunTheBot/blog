@@ -30,6 +30,8 @@ class MotionProfiler {
   private acceleration: number
   private targetPosition: number
   private lastUpdateTime: number
+  private kp: number
+  private kv: number
 
   constructor(config: Partial<MotionConfig> = {}) {
     // Configuration with defaults
@@ -44,6 +46,10 @@ class MotionProfiler {
     this.acceleration = 0
     this.targetPosition = 0
     this.lastUpdateTime = performance.now()
+
+    // Initialize control gains
+    this.kp = 5.0 + (Math.random() - 0.5) * 4 // Position error gain
+    this.kv = 2.0 // Velocity damping
   }
 
   public setTarget(newTarget: number): void {
@@ -92,11 +98,7 @@ class MotionProfiler {
   }
 
   private calculateDesiredAcceleration(error: number): number {
-    // Simple proportional-derivative control
-    const kp = 5.0 // Position error gain
-    const kv = 2.0 // Velocity damping
-
-    return kp * error - kv * this.velocity
+    return this.kp * error - this.kv * this.velocity
   }
 
   private limitValue(value: number, min: number, max: number): number {

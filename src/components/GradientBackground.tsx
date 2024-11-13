@@ -2,17 +2,23 @@
 import { useEffect, useRef, useState } from 'react'
 import { MotionProfiler, MotionConfig } from '../util/Motion'
 
-const GradientMotionConfig: Partial<MotionConfig> = {
-  maxJerk: 10000,
-  maxAccel: 10000,
-  maxVel: 1000,
+const xGradientMotionConfig: Partial<MotionConfig> = {
+  maxJerk: 10000 + (Math.random() - 0.5) * 2000,
+  maxAccel: 10000 + (Math.random() - 0.5) * 2000,
+  maxVel: 1000 + (Math.random() - 0.5) * 200,
+}
+
+const yGradientMotionConfig: Partial<MotionConfig> = {
+  maxJerk: 10000 + (Math.random() - 0.5) * 2000,
+  maxAccel: 10000 + (Math.random() - 0.5) * 2000,
+  maxVel: 1000 + (Math.random() - 0.5) * 200,
 }
 
 const GradientBackground = () => {
   const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
   const motionProfiler = useRef<{ x: MotionProfiler; y: MotionProfiler }>({
-    x: new MotionProfiler(GradientMotionConfig),
-    y: new MotionProfiler(GradientMotionConfig),
+    x: new MotionProfiler(xGradientMotionConfig),
+    y: new MotionProfiler(yGradientMotionConfig),
   })
   const animationFrameRef = useRef<number | null>(null)
 
