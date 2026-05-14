@@ -31,6 +31,10 @@ const GradientBackground = () => {
     const updatePosition = () => {
       const xState = motionProfiler.current.x.update()
       const yState = motionProfiler.current.y.update()
+      // Set Max and min values to prevent the gradient from going off-screen
+      const clampedX = Math.max(-1000, Math.min(window.innerWidth + 1000, xState.position))
+      const clampedY = Math.max(-1000, Math.min(window.innerHeight + 1000, yState.position))
+
       setPosition({ x: xState.position, y: yState.position })
       // Continue animation loop
       animationFrameRef.current = requestAnimationFrame(updatePosition)
